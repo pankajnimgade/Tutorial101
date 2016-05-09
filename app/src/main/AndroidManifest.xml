@@ -28,6 +28,42 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nimgade.pk.tutorial101.MainActivity" />
         </activity>
+        <activity
+            android:name="recycler.view.list.activities.one.RecyclerTestOneActivity"
+            android:label="@string/title_activity_recycler_test_one"
+            android:parentActivityName="recycler.view.list.activities.RecyclerViewListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="recycler.view.list.activities.RecyclerViewListActivity" />
+        </activity>
+        <activity
+            android:name="data.binding.list.activities.DataBindingListActivity"
+            android:label="@string/title_activity_data_binding_list"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nimgade.pk.tutorial101.MainActivity" />
+        </activity>
+        <activity
+            android:name="data.binding.list.activities.one.DataBindingOneActivity"
+            android:label="DataBindingOneActivity"
+            android:parentActivityName="data.binding.list.activities.DataBindingListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="data.binding.list.activities.DataBindingListActivity" />
+        </activity>
+        <activity
+            android:name="data.binding.list.activities.two.DataBindingTwoActivity"
+            android:label="DataBindingTwoActivity"
+            android:parentActivityName="data.binding.list.activities.DataBindingListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="data.binding.list.activities.DataBindingListActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.nimgade.pk.tutorial101;
+package data.binding.list.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,20 +6,20 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.nimgade.pk.tutorial101.R;
+
 import java.util.ArrayList;
 
-import data.binding.list.activities.DataBindingListActivity;
-import recycler.view.list.activities.RecyclerViewListActivity;
+import data.binding.list.activities.one.DataBindingOneActivity;
+import data.binding.list.activities.two.DataBindingTwoActivity;
 import support.my.classes.MyListItem;
 
-public class MainActivity extends AppCompatActivity {
+public class DataBindingListActivity extends AppCompatActivity {
 
     private ListView listView;
     private ArrayList<MyListItem> myListItems;
@@ -27,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_data_binding_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -44,15 +45,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeUI() {
-        listView = (ListView) findViewById(R.id.MainActivity_listView);
+        listView = (ListView) findViewById(R.id.DataBindingListActivity_listView);
         myListItems = new ArrayList<>();
 
-        myListItems.add(new MyListItem("RecyclerView List", RecyclerViewListActivity.class));
-        myListItems.add(new MyListItem("Data Binding List", DataBindingListActivity.class));
+        myListItems.add(new MyListItem("Test One Data Binding", DataBindingOneActivity.class));
+        myListItems.add(new MyListItem("Test Two Data Binding", DataBindingTwoActivity.class));
 
-        ArrayAdapter<MyListItem> adapter
-                = new ArrayAdapter<MyListItem>(getApplicationContext(), R.layout.simple_list_item_1, myListItems);
-
+        ArrayAdapter<MyListItem> adapter =
+                new ArrayAdapter<MyListItem>(getApplicationContext(), R.layout.simple_list_item_1, myListItems);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,25 +65,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

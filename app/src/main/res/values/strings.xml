@@ -2,4 +2,6 @@
     <string name="app_name">Tutorial101</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_recycler_view_list">RecyclerViewListActivity</string>
+    <string name="title_activity_recycler_test_one">RecyclerTestOneActivity</string>
+    <string name="title_activity_data_binding_list">DataBindingListActivity</string>
 </resources>
