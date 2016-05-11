@@ -4,12 +4,11 @@
 
     <data>
 
-        <import type="data.binding.list.activities.three.Movie" />
+        <import type="data.binding.list.activities.four.imageview.data.binding.MyNote" />
 
         <variable
-            name="movie"
-            type="Movie" />
-
+            name="myNote"
+            type="MyNote" />
     </data>
 
     <LinearLayout
@@ -27,10 +26,10 @@
             android:padding="4dp">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:scaleType="fitCenter"
-                app:imageUrl="@{movie.image}" />
+                app:imageUrl="@{myNote.image_url}" />
         </LinearLayout>
 
         <LinearLayout
@@ -43,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:text="@{movie.title, default = Movie_Title}"
+                android:text="@{myNote.image_url, default = Image_url}"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@android:color/black" />
 
@@ -51,26 +50,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:text="@{movie.rating, default = Rating}"
+                android:text="@{myNote.note_name, default = Note_Name}"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:text="@{movie.genre[0], default = Genre}"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="2dp"
-                android:text="@{movie.releaseYear, default = Year_of_release}"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@android:color/black" />
         </LinearLayout>
     </LinearLayout>
 </layout>

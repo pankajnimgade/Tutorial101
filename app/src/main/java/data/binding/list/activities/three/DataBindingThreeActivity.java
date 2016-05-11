@@ -2,11 +2,12 @@ package data.binding.list.activities.three;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.nimgade.pk.tutorial101.MyMovie;
 import com.nimgade.pk.tutorial101.R;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 public class DataBindingThreeActivity extends AppCompatActivity {
 
     private static final String TAG = "DataBindingThree";
+    private RecyclerView recyclerView;
+    private ArrayList<Movie> myMovies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class DataBindingThreeActivity extends AppCompatActivity {
     }
 
     private void initializeUI() {
+        recyclerView = (RecyclerView) findViewById(R.id.DataBindingThreeActivity_RecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         downloadJSON();
     }
 
@@ -51,6 +56,7 @@ public class DataBindingThreeActivity extends AppCompatActivity {
                 .url(url)
                 .build();
 
+
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
@@ -64,10 +70,19 @@ public class DataBindingThreeActivity extends AppCompatActivity {
                 Log.d(TAG, "onResponse: " + result_json);
                 Type list_type = new com.google.gson.reflect.TypeToken<ArrayList<Movie>>() {
                 }.getType();
-                ArrayList<Movie> myMovies = (new Gson()).fromJson(result_json, list_type);
-                for (Movie myMovie:myMovies) {
-                    Log.d(TAG, "onResponse: "+myMovie.getTitle());
+                myMovies = (new Gson()).fromJson(result_json, list_type);
+                for (Movie myMovie : myMovies) {
+                    Log.d(TAG, "onResponse: " + myMovie.getTitle());
                 }
+                DataBindingThreeActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MovieAdapter adapter =
+                                new MovieAdapter(getApplicationContext(), myMovies);
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
         });
     }
@@ -75,5 +90,7 @@ public class DataBindingThreeActivity extends AppCompatActivity {
     private void passResult(String result_json) {
         Log.d(TAG, "passResult: " + result_json);
     }
+
+
 
 }

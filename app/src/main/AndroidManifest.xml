@@ -10,7 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -69,6 +69,14 @@
         <activity
             android:name="data.binding.list.activities.three.DataBindingThreeActivity"
             android:label="DataBindingThreeActivity"
+            android:parentActivityName="data.binding.list.activities.DataBindingListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="data.binding.list.activities.DataBindingListActivity" />
+        </activity>
+        <activity android:name="data.binding.list.activities.four.imageview.data.binding.DataBindingFourActivity"
+            android:label="DataBindingFourActivity"
             android:parentActivityName="data.binding.list.activities.DataBindingListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

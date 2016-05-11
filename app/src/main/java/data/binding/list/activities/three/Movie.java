@@ -2,9 +2,15 @@ package data.binding.list.activities.three;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
 
 import com.google.gson.annotations.SerializedName;
 import com.nimgade.pk.tutorial101.BR;
+import com.nimgade.pk.tutorial101.R;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * Created by Pankaj Nimgade on 10-05-2016.
@@ -21,10 +27,10 @@ public class Movie extends BaseObservable {
     private String rating;
 
     @SerializedName("releaseYear")
-    private int releaseYear;
+    private String releaseYear;
 
     @SerializedName("genre")
-    private String[] genre;
+    private ArrayList<String> genre;
 
     @Bindable
     public String getTitle() {
@@ -57,22 +63,30 @@ public class Movie extends BaseObservable {
     }
 
     @Bindable
-    public int getReleaseYear() {
+    public String getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
         notifyPropertyChanged(BR.releaseYear);
     }
 
     @Bindable
-    public String[] getGenre() {
+    public ArrayList<String> getGenre() {
         return genre;
     }
 
-    public void setGenre(String[] genre) {
+    public void setGenre(ArrayList<String> genre) {
         this.genre = genre;
         notifyPropertyChanged(BR.genre);
+    }
+
+    @BindingAdapter({"app:imageUrl"})
+    public static void loadImage(ImageView view, String imageUrl) {
+        Picasso.with(view.getContext())
+                .load(imageUrl)
+                .placeholder(R.drawable.pic)
+                .into(view);
     }
 }

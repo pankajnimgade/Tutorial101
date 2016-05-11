@@ -1,5 +1,6 @@
 package data.binding.list.activities.three;
 
+import android.databinding.BindingAdapter;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -10,7 +11,7 @@ import com.squareup.picasso.Picasso;
  */
 public class ImageBindingAdapter {
 
-//    @BindingAdapter("bind:imageUrl")
+    @BindingAdapter({"bind:imageUrl"})
     public static void loadImage(ImageView imageView, String url) {
         Picasso.with(imageView.getContext()).load(url).into(imageView);
     }

@@ -15,6 +15,7 @@ import com.nimgade.pk.tutorial101.R;
 
 import java.util.ArrayList;
 
+import data.binding.list.activities.four.imageview.data.binding.DataBindingFourActivity;
 import data.binding.list.activities.one.DataBindingOneActivity;
 import data.binding.list.activities.three.DataBindingThreeActivity;
 import data.binding.list.activities.two.DataBindingTwoActivity;
@@ -52,6 +53,7 @@ public class DataBindingListActivity extends AppCompatActivity {
         myListItems.add(new MyListItem("Test One Data Binding", DataBindingOneActivity.class));
         myListItems.add(new MyListItem("Test Two Data Binding", DataBindingTwoActivity.class));
         myListItems.add(new MyListItem("Test Three Data Binding", DataBindingThreeActivity.class));
+        myListItems.add(new MyListItem("Test Four Data Binding", DataBindingFourActivity.class));
 
         ArrayAdapter<MyListItem> adapter =
                 new ArrayAdapter<MyListItem>(getApplicationContext(), R.layout.simple_list_item_1, myListItems);
