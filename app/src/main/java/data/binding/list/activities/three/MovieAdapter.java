@@ -45,6 +45,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.BindingHolde
         holder.getBinding().executePendingBindings();
     }
 
+    @BindingAdapter({"bind:imageUrl"})
+    public static void loadImage(ImageView imageView, String url) {
+        Picasso.with(imageView.getContext()).load(url).into(imageView);
+    }
+
     @Override
     public int getItemCount() {
         return movies.size();
@@ -63,9 +68,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.BindingHolde
             return binding;
         }
 
-        @BindingAdapter({"bind:imageUrl"})
-        public static void loadImage(ImageView imageView, String url) {
-            Picasso.with(imageView.getContext()).load(url).into(imageView);
-        }
+
     }
 }

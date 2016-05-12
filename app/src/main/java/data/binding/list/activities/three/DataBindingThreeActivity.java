@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.nimgade.pk.tutorial101.R;
@@ -38,6 +40,12 @@ public class DataBindingThreeActivity extends AppCompatActivity {
     private void initializeUI() {
         recyclerView = (RecyclerView) findViewById(R.id.DataBindingThreeActivity_RecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, float x, float y) {
+                Toast.makeText(getApplicationContext(), ""+myMovies.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        }));
         downloadJSON();
     }
 
