@@ -10,6 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".MainActivity"
@@ -75,13 +76,32 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="data.binding.list.activities.DataBindingListActivity" />
         </activity>
-        <activity android:name="data.binding.list.activities.four.imageview.data.binding.DataBindingFourActivity"
+        <activity
+            android:name="data.binding.list.activities.four.imageview.data.binding.DataBindingFourActivity"
             android:label="DataBindingFourActivity"
             android:parentActivityName="data.binding.list.activities.DataBindingListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="data.binding.list.activities.DataBindingListActivity" />
+        </activity>
+        <activity
+            android:name="realm.list.activities.RealmListActivity"
+            android:label="@string/title_activity_realm_list"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nimgade.pk.tutorial101.MainActivity" />
+        </activity>
+        <activity
+            android:name="realm.list.activities.one.RealmOneActivity"
+            android:label="RealmOneActivity"
+            android:parentActivityName="realm.list.activities.RealmListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="realm.list.activities.one.RealmOneActivity" />
         </activity>
     </application>
 

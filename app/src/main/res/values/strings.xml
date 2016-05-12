@@ -4,4 +4,5 @@
     <string name="title_activity_recycler_view_list">RecyclerViewListActivity</string>
     <string name="title_activity_recycler_test_one">RecyclerTestOneActivity</string>
     <string name="title_activity_data_binding_list">DataBindingListActivity</string>
+    <string name="title_activity_realm_list">RealmListActivity</string>
 </resources>

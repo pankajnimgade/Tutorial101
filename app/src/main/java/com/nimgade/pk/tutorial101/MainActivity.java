@@ -16,6 +16,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import data.binding.list.activities.DataBindingListActivity;
+import realm.list.activities.RealmListActivity;
 import recycler.view.list.activities.RecyclerViewListActivity;
 import support.my.classes.MyListItem;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         myListItems.add(new MyListItem("RecyclerView List", RecyclerViewListActivity.class));
         myListItems.add(new MyListItem("Data Binding List", DataBindingListActivity.class));
+        myListItems.add(new MyListItem("Realm List", RealmListActivity.class));
 
         ArrayAdapter<MyListItem> adapter
                 = new ArrayAdapter<MyListItem>(getApplicationContext(), R.layout.simple_list_item_1, myListItems);
