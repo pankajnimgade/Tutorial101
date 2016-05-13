@@ -22,7 +22,7 @@ public class User extends BaseObservable {
     private int created_at;
     private int updated_at;
     private int flags;
-    private String rabbitmq_routing_key;
+    private int rabbitmq_routing_key;
     private String rabbitmq_channel_name;
 
     @Bindable
@@ -146,11 +146,11 @@ public class User extends BaseObservable {
     }
 
     @Bindable
-    public String getRabbitmq_routing_key() {
+    public int getRabbitmq_routing_key() {
         return rabbitmq_routing_key;
     }
 
-    public void setRabbitmq_routing_key(String rabbitmq_routing_key) {
+    public void setRabbitmq_routing_key(int rabbitmq_routing_key) {
         this.rabbitmq_routing_key = rabbitmq_routing_key;
         notifyPropertyChanged(BR.rabbitmq_routing_key);
     }

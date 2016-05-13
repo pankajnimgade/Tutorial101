@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.nimgade.pk.tutorial101.R;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -83,6 +81,7 @@ public class RealmOneActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void loadFromServer() {
+        Log.d(TAG, "loadFromServer: ");
         try {
             OkHttpClient okHttpClient = new OkHttpClient();
             final Request request = new Request.Builder().url("http://api.chatndate.com/web/api/users").build();
@@ -94,24 +93,32 @@ public class RealmOneActivity extends AppCompatActivity implements View.OnClickL
 
                 @Override
                 public void onResponse(Response response) throws IOException {
-                    String result = response.body().string();
+                    final String result = response.body().string();
                     Log.d(TAG, "onResponse: \n" + result);
-                    UserTransactions userTransactions = new UserTransactions(getApplicationContext());
-                    userTransactions.saveUserJson(result);
-                    if (result == null)
-                        return;
-                    if (result.contentEquals(""))
-                        return;
-                    users = (new Gson()).fromJson(result, new TypeToken<ArrayList<User>>() {
-                    }.getType());
-                    userAdapter = new UserAdapter(getApplicationContext(), users);
-                    RealmOneActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            recyclerView.setAdapter(userAdapter);
-                            userAdapter.notifyDataSetChanged();
+                    try {
+                        if (result == null) {
+                            return;
                         }
-                    });
+                        if (result.contentEquals("")) {
+                            return;
+                        }
+                        UserTransactions transactions = new UserTransactions(getApplicationContext());
+                        transactions.saveUserJson(result);
+                        users.clear();
+                        Iterator<User> userIterator = transactions.readUserList();
+                        while (userIterator.hasNext()) {
+                            users.add(userIterator.next());
+                        }
+                        userAdapter = new UserAdapter(getApplicationContext(), users);
+                        RealmOneActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                recyclerView.setAdapter(userAdapter);
+                                userAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    } catch (Exception e) {
+                    }
                 }
             });
         } catch (Exception e) {

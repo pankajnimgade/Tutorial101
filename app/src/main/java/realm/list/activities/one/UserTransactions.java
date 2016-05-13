@@ -24,11 +24,13 @@ public class UserTransactions {
     private Realm userRealm;
 
     public UserTransactions(Context context) {
+        Log.d(TAG, "UserTransactions: Constructor: ");
         this.context = context;
         this.userRealm = (new MyRealmHandler(this.context)).getModelsRealmDatabase();
     }
 
     public void saveUserJson(String userJson) {
+        Log.d(TAG, "saveUserJson: \n" + userJson);
         if (userJson == null)
             return;
         if (userJson.contentEquals(""))
@@ -37,6 +39,7 @@ public class UserTransactions {
             ArrayList<User> users = (new Gson()).fromJson(userJson, new TypeToken<ArrayList<User>>() {
             }.getType());
             if (users != null) {
+                Log.d(TAG, "saveUserJson: trying to save json users:" + users.size());
                 saveUsersList(users);
             }
         } catch (Exception e) {
@@ -46,10 +49,13 @@ public class UserTransactions {
     }
 
     private void saveUsersList(ArrayList<User> users) {
+        Log.d(TAG, "saveUsersList: Saving...");
         for (User user : users) {
             if (readUserId(user.getId())) {
+                Log.d(TAG, "saveUsersList: try updateRecord");
                 updateRecord(user);
             } else {
+                Log.d(TAG, "saveUsersList: try createRecord");
                 createRecord(user);
             }
         }
@@ -59,6 +65,7 @@ public class UserTransactions {
      * This methods tries to read a User and notifies if it exist in RealmDatabase of not.
      */
     private boolean readUserId(int id) {
+        Log.d(TAG, "readUserId: :" + id);
         UserRealm userRealm = this.userRealm
                 .where(UserRealm.class)
                 .equalTo("id", id)
@@ -70,8 +77,8 @@ public class UserTransactions {
      * This would create a record in Realm Database
      */
     private void createRecord(User user) {
-        this.userRealm.beginTransaction();
         Log.d(TAG, "createRecord: ");
+        this.userRealm.beginTransaction();
         UserRealm currentUserRealm = this.userRealm.createObject(UserRealm.class);
         currentUserRealm.setId(user.getId());
         currentUserRealm.setUsername(user.getUsername());
@@ -99,11 +106,11 @@ public class UserTransactions {
      * This would updated a record in Realm DataBase
      */
     private void updateRecord(User user) {
+        Log.d(TAG, "updateRecord: ");
         UserRealm currentUserRealm = this.userRealm
                 .where(UserRealm.class)
                 .equalTo("id", user.getId())
                 .findFirst();
-        Log.d(TAG, "updateRecord:currentUserRealm:Json :\n" + (new Gson()).toJson(currentUserRealm));
         if (currentUserRealm != null) {
             Log.d(TAG, "updateRecord: user exists so update it:");
             this.userRealm.beginTransaction();
@@ -132,6 +139,7 @@ public class UserTransactions {
      * This will return the Iterator<User>
      */
     public Iterator<User> readUserList() {
+        Log.d(TAG, "readUserList: ");
         ArrayList<User> users = new ArrayList<>();
         RealmResults<UserRealm> usersRealms = this.userRealm.allObjects(UserRealm.class);
         if (usersRealms != null) {

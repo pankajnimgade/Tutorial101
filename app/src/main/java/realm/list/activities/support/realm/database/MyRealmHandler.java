@@ -1,6 +1,7 @@
 package realm.list.activities.support.realm.database;
 
 import android.content.Context;
+import android.util.Log;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -10,6 +11,8 @@ import io.realm.RealmConfiguration;
  */
 public class MyRealmHandler {
 
+    private static final String TAG = MyRealmHandler.class.getSimpleName();
+
     private Context context;
 
     private Realm default_Realm;
@@ -17,6 +20,7 @@ public class MyRealmHandler {
     private Realm models_Realm;
 
     public MyRealmHandler(Context context) {
+        Log.d(TAG, "MyRealmHandler: Constructor: ");
         this.context = context;
     }
 
@@ -30,6 +34,7 @@ public class MyRealmHandler {
     }
 
     public Realm getModelsRealmDatabase() {
+        Log.d(TAG, "getModelsRealmDatabase: ");
         models_Realm = Realm.getInstance(
                 new RealmConfiguration.Builder(this.context)
                         .name("models.realm")

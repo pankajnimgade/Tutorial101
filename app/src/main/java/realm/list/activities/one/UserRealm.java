@@ -1,15 +1,12 @@
 package realm.list.activities.one;
 
 import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Pankaj Nimgade on 12-05-2016.
  */
 public class UserRealm extends RealmObject {
 
-    @PrimaryKey
-    private int id_UserRealm;
     private int id;
     private String username;
     private String email;
@@ -22,16 +19,8 @@ public class UserRealm extends RealmObject {
     private int created_at;
     private int updated_at;
     private int flags;
-    private String rabbitmq_routing_key;
+    private int rabbitmq_routing_key;
     private String rabbitmq_channel_name;
-
-    public int getId_UserRealm() {
-        return id_UserRealm;
-    }
-
-    public void setId_UserRealm(int id_UserRealm) {
-        this.id_UserRealm = id_UserRealm;
-    }
 
     public int getId() {
         return id;
@@ -129,11 +118,11 @@ public class UserRealm extends RealmObject {
         this.flags = flags;
     }
 
-    public String getRabbitmq_routing_key() {
+    public int getRabbitmq_routing_key() {
         return rabbitmq_routing_key;
     }
 
-    public void setRabbitmq_routing_key(String rabbitmq_routing_key) {
+    public void setRabbitmq_routing_key(int rabbitmq_routing_key) {
         this.rabbitmq_routing_key = rabbitmq_routing_key;
     }
 
