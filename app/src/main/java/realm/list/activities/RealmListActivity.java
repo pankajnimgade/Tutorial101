@@ -14,6 +14,7 @@ import com.nimgade.pk.tutorial101.R;
 import java.util.ArrayList;
 
 import realm.list.activities.one.RealmOneActivity;
+import realm.list.activities.two.RealmTwoActivity;
 import support.my.classes.MyListItem;
 
 public class RealmListActivity extends AppCompatActivity {
@@ -37,6 +38,7 @@ public class RealmListActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.RealmListActivity_listView);
         myListItems = new ArrayList<>();
         myListItems.add(new MyListItem("Realm One Test", RealmOneActivity.class));
+        myListItems.add(new MyListItem("Realm Two Test", RealmTwoActivity.class));
 
         adapter = new ArrayAdapter<MyListItem>(getApplicationContext(), R.layout.simple_list_item_1, myListItems);
 
