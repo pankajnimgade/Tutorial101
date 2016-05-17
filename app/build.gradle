@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 23
@@ -33,6 +34,6 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.2.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.2.0'
     compile 'com.squareup.picasso:picasso:2.4.0'
-    compile 'io.realm:realm-android:0.87.5'
+    compile 'commons-codec:commons-codec:20041127.091804'
 }
 

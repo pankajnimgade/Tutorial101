@@ -12,6 +12,7 @@ import com.nimgade.pk.tutorial101.R;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import support.my.classes.StartUp;
 
 public class RealmTwoActivity extends AppCompatActivity {
 
@@ -63,10 +64,10 @@ public class RealmTwoActivity extends AppCompatActivity {
 
         Dog theDog = realm.where(Dog.class).equalTo("name", "Rex").findFirst();
         if (theDog != null) {
-
-            textView.setText("Name:" + theDog.getName()+"\n Age: "+theDog.getAge());
-        }else{
-            textView.setText("it was null" );
+            String jsonResult = (StartUp.getGson().create()).toJson(theDog);
+            textView.setText("" + jsonResult);
+        } else {
+            textView.setText("it was null");
 
         }
 

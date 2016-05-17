@@ -112,6 +112,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="realm.list.activities.RealmListActivity" />
         </activity>
+        <activity
+            android:name="realm.list.activities.three.RealmThreeActivity"
+            android:label="RealmThreeActivity"
+            android:parentActivityName="realm.list.activities.RealmListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="realm.list.activities.RealmListActivity" />
+        </activity>
+        <activity
+            android:name="realm.list.activities.four.encryption.RealmEncryptionActivity"
+            android:label="RealmEncryptionActivity"
+            android:parentActivityName="realm.list.activities.RealmListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="realm.list.activities.RealmListActivity" />
+        </activity>
     </application>
 
 </manifest>
