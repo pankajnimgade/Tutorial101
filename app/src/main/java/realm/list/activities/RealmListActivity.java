@@ -13,6 +13,7 @@ import com.nimgade.pk.tutorial101.R;
 
 import java.util.ArrayList;
 
+import realm.list.activities.five.gridview.RealmGridViewActivity;
 import realm.list.activities.four.encryption.RealmEncryptionActivity;
 import realm.list.activities.one.RealmOneActivity;
 import realm.list.activities.three.RealmThreeActivity;
@@ -43,6 +44,7 @@ public class RealmListActivity extends AppCompatActivity {
         myListItems.add(new MyListItem("Realm Two Test", RealmTwoActivity.class));
         myListItems.add(new MyListItem("Realm Three Test", RealmThreeActivity.class));
         myListItems.add(new MyListItem("Realm Encryption Test", RealmEncryptionActivity.class));
+        myListItems.add(new MyListItem("Realm Grid Test", RealmGridViewActivity.class));
 
         adapter = new ArrayAdapter<MyListItem>(getApplicationContext(), R.layout.simple_list_item_1, myListItems);
 

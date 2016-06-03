@@ -5,4 +5,6 @@
     <string name="title_activity_recycler_test_one">RecyclerTestOneActivity</string>
     <string name="title_activity_data_binding_list">DataBindingListActivity</string>
     <string name="title_activity_realm_list">RealmListActivity</string>
+    <string name="title_activity_example101">Example101Activity</string>
+    <string name="title_activity_industry">IndustryActivity</string>
 </resources>

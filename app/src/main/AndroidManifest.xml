@@ -130,6 +130,33 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="realm.list.activities.RealmListActivity" />
         </activity>
+        <activity
+            android:name="realm.list.activities.five.gridview.RealmGridViewActivity"
+            android:label="RealmGridViewActivity"
+            android:parentActivityName="realm.list.activities.RealmListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="realm.list.activities.RealmListActivity" />
+        </activity>
+        <activity
+            android:name="example101.list.activities.Example101Activity"
+            android:label="@string/title_activity_example101"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nimgade.pk.tutorial101.MainActivity" />
+        </activity>
+        <activity
+            android:name="example101.list.activities.IndustryActivity"
+            android:label="@string/title_activity_industry"
+            android:parentActivityName="example101.list.activities.Example101Activity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="example101.list.activities.Example101Activity" />
+        </activity>
     </application>
 
 </manifest>
